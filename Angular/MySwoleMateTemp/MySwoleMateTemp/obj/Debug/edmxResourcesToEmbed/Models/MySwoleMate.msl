@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MySwoleMateModelStoreContainer" CdmEntityContainer="MySwoleMateEntities">
+    <EntitySetMapping Name="Avaliablities">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Avaliablity">
+        <MappingFragment StoreEntitySet="Avaliablity">
+          <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+          <ScalarProperty Name="AvaliableMonday" ColumnName="AvaliableMonday" />
+          <ScalarProperty Name="AvaliableTuesday" ColumnName="AvaliableTuesday" />
+          <ScalarProperty Name="AvaliableWednesday" ColumnName="AvaliableWednesday" />
+          <ScalarProperty Name="AvaliableThursday" ColumnName="AvaliableThursday" />
+          <ScalarProperty Name="AvaliableFriday" ColumnName="AvaliableFriday" />
+          <ScalarProperty Name="AvaliableSaturday" ColumnName="AvaliableSaturday" />
+          <ScalarProperty Name="AvaliableSunday" ColumnName="AvaliableSunday" />
+          <ScalarProperty Name="MondayStart" ColumnName="MondayStart" />
+          <ScalarProperty Name="MondayEnd" ColumnName="MondayEnd" />
+          <ScalarProperty Name="TuesdayStart" ColumnName="TuesdayStart" />
+          <ScalarProperty Name="TuesdayEnd" ColumnName="TuesdayEnd" />
+          <ScalarProperty Name="WednesdayStart" ColumnName="WednesdayStart" />
+          <ScalarProperty Name="WednesdayEnd" ColumnName="WednesdayEnd" />
+          <ScalarProperty Name="ThursdayStart" ColumnName="ThursdayStart" />
+          <ScalarProperty Name="ThursdayEnd" ColumnName="ThursdayEnd" />
+          <ScalarProperty Name="FridayStart" ColumnName="FridayStart" />
+          <ScalarProperty Name="FridayEnd" ColumnName="FridayEnd" />
+          <ScalarProperty Name="SaturdayStart" ColumnName="SaturdayStart" />
+          <ScalarProperty Name="SaturdayEnd" ColumnName="SaturdayEnd" />
+          <ScalarProperty Name="SundayStart" ColumnName="SundayStart" />
+          <ScalarProperty Name="SundayEnd" ColumnName="SundayEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercises">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Exercis">
+        <MappingFragment StoreEntitySet="Exercises">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gyms">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Gym">
+        <MappingFragment StoreEntitySet="Gym">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GymName" ColumnName="GymName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Meals">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Meal">
+        <MappingFragment StoreEntitySet="Meal">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MealTime" ColumnName="MealTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+          <ScalarProperty Name="MealName" ColumnName="MealName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MealPlans">
+      <EntityTypeMapping TypeName="MySwoleMateModel.MealPlan">
+        <MappingFragment StoreEntitySet="MealPlan">
+          <ScalarProperty Name="Id_FK" ColumnName="Id_FK" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="MaxCal" ColumnName="MaxCal" />
+          <ScalarProperty Name="MondayBreakfast_FK" ColumnName="MondayBreakfast_FK" />
+          <ScalarProperty Name="MondayLunch_FK" ColumnName="MondayLunch_FK" />
+          <ScalarProperty Name="MondaySupper_FK" ColumnName="MondaySupper_FK" />
+          <ScalarProperty Name="TuesdayBreakfast_FK" ColumnName="TuesdayBreakfast_FK" />
+          <ScalarProperty Name="TuesdayLunch_FK" ColumnName="TuesdayLunch_FK" />
+          <ScalarProperty Name="TuesdaySupper_FK" ColumnName="TuesdaySupper_FK" />
+          <ScalarProperty Name="WednesdayBreakfast_FK" ColumnName="WednesdayBreakfast_FK" />
+          <ScalarProperty Name="WednesdayLunch_FK" ColumnName="WednesdayLunch_FK" />
+          <ScalarProperty Name="WednesdaySupper_FK" ColumnName="WednesdaySupper_FK" />
+          <ScalarProperty Name="ThursdayBreakfast_FK" ColumnName="ThursdayBreakfast_FK" />
+          <ScalarProperty Name="ThursdayLunch_FK" ColumnName="ThursdayLunch_FK" />
+          <ScalarProperty Name="ThursdaySupper_FK" ColumnName="ThursdaySupper_FK" />
+          <ScalarProperty Name="FridayBreakfast_FK" ColumnName="FridayBreakfast_FK" />
+          <ScalarProperty Name="FridayLunch_FK" ColumnName="FridayLunch_FK" />
+          <ScalarProperty Name="FridaySupper_FK" ColumnName="FridaySupper_FK" />
+          <ScalarProperty Name="SaturdayBreakfast_FK" ColumnName="SaturdayBreakfast_FK" />
+          <ScalarProperty Name="SaturdayLunch_FK" ColumnName="SaturdayLunch_FK" />
+          <ScalarProperty Name="SaturdaySupper_FK" ColumnName="SaturdaySupper_FK" />
+          <ScalarProperty Name="SundayBreakfast_FK" ColumnName="SundayBreakfast_FK" />
+          <ScalarProperty Name="SundayLunch_FK" ColumnName="SundayLunch_FK" />
+          <ScalarProperty Name="SundaySupper_FK" ColumnName="SundaySupper_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="Trainer_FK" ColumnName="Trainer_FK" />
+          <ScalarProperty Name="Trainee_FK" ColumnName="Trainee_FK" />
+          <ScalarProperty Name="From_FK" ColumnName="From_FK" />
+          <ScalarProperty Name="Message1" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayScales">
+      <EntityTypeMapping TypeName="MySwoleMateModel.PayScale">
+        <MappingFragment StoreEntitySet="PayScale">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Pay" ColumnName="Pay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trainees">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Trainee">
+        <MappingFragment StoreEntitySet="Trainee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Trainer_FK" ColumnName="Trainer_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trainers">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Trainer">
+        <MappingFragment StoreEntitySet="Trainer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+          <ScalarProperty Name="GymID_FK" ColumnName="GymID_FK" />
+          <ScalarProperty Name="isAvaliable" ColumnName="isAvaliable" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workouts">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Workout">
+        <MappingFragment StoreEntitySet="Workout">
+          <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ex1" ColumnName="ex1" />
+          <ScalarProperty Name="ex1Reps" ColumnName="ex1Reps" />
+          <ScalarProperty Name="ex2" ColumnName="ex2" />
+          <ScalarProperty Name="ex2Reps" ColumnName="ex2Reps" />
+          <ScalarProperty Name="ex3" ColumnName="ex3" />
+          <ScalarProperty Name="ex3Reps" ColumnName="ex3Reps" />
+          <ScalarProperty Name="ex4" ColumnName="ex4" />
+          <ScalarProperty Name="ex4Reps" ColumnName="ex4Reps" />
+          <ScalarProperty Name="ex5" ColumnName="ex5" />
+          <ScalarProperty Name="ex5Reps" ColumnName="ex5Reps" />
+          <ScalarProperty Name="ex6" ColumnName="ex6" />
+          <ScalarProperty Name="ex6Reps" ColumnName="ex6Reps" />
+          <ScalarProperty Name="ex7" ColumnName="ex7" />
+          <ScalarProperty Name="ex7Reps" ColumnName="ex7Reps" />
+          <ScalarProperty Name="ex8" ColumnName="ex8" />
+          <ScalarProperty Name="ex8Reps" ColumnName="ex8Reps" />
+          <ScalarProperty Name="ex9" ColumnName="ex9" />
+          <ScalarProperty Name="ex9Reps" ColumnName="ex9Reps" />
+          <ScalarProperty Name="ex10" ColumnName="ex10" />
+          <ScalarProperty Name="ex10Reps" ColumnName="ex10Reps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="MySwoleMateModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TrainerPay" TypeName="MySwoleMateModel.TrainerPay" StoreEntitySet="TrainerPay">
+      <EndProperty Name="PayScale">
+        <ScalarProperty Name="ID" ColumnName="Pay_FK" />
+      </EndProperty>
+      <EndProperty Name="Trainer">
+        <ScalarProperty Name="ID" ColumnName="Trainer_FK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GymTransfer" TypeName="MySwoleMateModel.GymTransfer" StoreEntitySet="GymTransfer">
+      <EndProperty Name="Gym">
+        <ScalarProperty Name="ID" ColumnName="GymID_FK" />
+      </EndProperty>
+      <EndProperty Name="Trainer">
+        <ScalarProperty Name="ID" ColumnName="TrainerID_FK" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,113 @@
+﻿<style>
+    /*.ng-invalid { background-color: lightpink; }
+    .ng-valid { background-color: lightgreen; }
+    span.error { color: red; font-weight: bold; }*/
+</style>
+
+<h2>Check out now</h2>
+<p>Please enter your details, and we'll ship your goods right away!</p>
+
+<form name="shippingForm" novalidate>
+    <div class="well">
+        <h3>Ship to</h3>
+        <div class="form-group" ng-class="{'has-error':shippingForm.name.$invalid && shippingForm.name.$dirty}">
+            <label>Name</label>
+            <input name="name" class="form-control" ng-model="data.shipping.name" required ng-maxlength="50" 
+                ng-pattern="charOnlyPattern"
+            />
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.name.$invalid && shippingForm.name.$dirty}" 
+                ng-show="shippingForm.name.$invalid && shippingForm.name.$dirty && shippingForm.name.$error.required">
+                Please enter a name.
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.name.$invalid && shippingForm.name.$dirty}" 
+                ng-show="shippingForm.name.$invalid && shippingForm.name.$dirty && shippingForm.name.$error.maxlength">
+                Please enter less than 50 characters.
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.name.$invalid && shippingForm.name.$dirty}" 
+                ng-show="shippingForm.name.$invalid && shippingForm.name.$dirty && shippingForm.name.$error.pattern">
+                Please enter only characters.
+            </span>
+        </div>
+
+        <h3>Address</h3>
+
+        <div class="form-group" ng-class="{'has-error':shippingForm.street.$invalid && shippingForm.street.$dirty}">
+            <label>Street Address</label>
+            <input name="street" class="form-control" ng-model="data.shipping.street" required ng-maxlength="200" />
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.street.$invalid && shippingForm.street.$dirty}" 
+                ng-show="shippingForm.street.$invalid && shippingForm.street.$dirty && shippingForm.street.$error.required">
+                Please enter an address.
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.street.$invalid && shippingForm.street.$dirty}" 
+                ng-show="shippingForm.street.$invalid && shippingForm.street.$dirty && shippingForm.street.$error.maxlength">
+                Please enter less than 200 characters.
+            </span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':shippingForm.city.$invalid && shippingForm.city.$dirty}">
+            <label>City</label>
+            <input name="city" class="form-control" ng-model="data.shipping.city" required ng-maxlength="50" />
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.city.$invalid && shippingForm.city.$dirty}" 
+                ng-show="shippingForm.city.$invalid && shippingForm.city.$dirty && shippingForm.city.$error.required">
+                Please enter an city.
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.city.$invalid && shippingForm.city.$dirty}" 
+                ng-show="shippingForm.city.$invalid && shippingForm.city.$dirty && shippingForm.city.$error.maxlength">
+                Please enter less than 50 characters.
+            </span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':shippingForm.state.$invalid && shippingForm.state.$dirty}">
+            <label>State Abbrev.</label>
+            <div class="row">
+                <div class="col-xs-2">
+                    <input name="state" class="form-control" ng-model="data.shipping.state" required ng-maxlength="2" 
+                        ng-minlength="2" ng-pattern="charOnlyPattern"
+                    />
+                </div>
+            </div>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.state.$invalid && shippingForm.state.$dirty}" 
+                ng-show="shippingForm.state.$invalid && shippingForm.state.$dirty && shippingFOrm.state.$error.required">
+                Please enter the abbreviation of the State.
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.state.$invalid && shippingForm.state.$dirty}" 
+                ng-show="shippingForm.state.$invalid && shippingForm.state.$dirty && (shippingForm.state.$error.minlength||shippingForm.state.$error.maxlength||shippingForm.state.$error.pattern)">
+                Please enter only 2 characters.
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Zip</label>
+            <input name="zip" class="form-control" ng-model="data.shipping.zip" required ng-maxlength="5" ng-minlength="5" />
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.zip.$invalid && shippingForm.zip.$dirty}" 
+                ng-show="shippingForm.zip.$invalid && shippingForm.zip.$dirty">
+                Please enter the Zip Code
+            </span>
+            <span class="error" ng-class="{'help-block with-errors':shippingForm.zip.$invalid && shippingForm.zip.$dirty}" 
+                ng-show="shippingForm.zip.$invalid && shippingForm.zip.$dirty && shippingForm.zip.$error.pattern">
+                Please enter only 5 numbers.
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <input name="country" class="form-control" ng-model="data.shipping.country" required />
+            <span class="error" ng-show="shippingForm.country.$error.required">
+                Please enter a country
+            </span>
+        </div>
+
+        <h3>Options</h3>
+        <div class="checkbox">
+            <label>
+                <input name="giftwrap" type="checkbox" ng-model="data.shipping.giftwrap" /> Gift wrap these items
+            </label>
+        </div>
+
+        <div class="text-center">
+            <button ng-disabled="shippingForm.$invalid" ng-click="sendOrder(data.shipping)" class="btn btn-primary">
+                Complete order
+            </button>
+        </div>
+    </div>
+</form>

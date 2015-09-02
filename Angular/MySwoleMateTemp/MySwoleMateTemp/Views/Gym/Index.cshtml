@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Gym Page";
+}
+
+@section scripts{
+    <script src="~/Scripts/Gym/GymController.js"></script>
+}
+
+<h2>Gym Page</h2>
+
+<ng-view/>
+<div ng-app="GymDemo">
+    <div class="col-xs-8" ng-controller="GymController">
+        <div class="well"
+             ng-repeat="item in data.gyms">
+            <h3>
+                <strong>{{item.GymName}}</strong>
+                <span class="pull-right label label-primary">
+                    {{item.City}}, {{item.State}}
+                </span>
+            </h3>
+            <span class="lead">{{item.Zip}}</span>
+        </div>
+    </div>
+</div>
+
+<a href="@Url.Action("AddGym", "Gym")" class="btn btn-primary">Add Gym</a>
+

@@ -1,0 +1,2144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MySwoleMateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Avaliablity">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="int" Nullable="false" />
+          <Property Name="AvaliableMonday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableTuesday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableWednesday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableThursday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableFriday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableSaturday" Type="bit" Nullable="false" />
+          <Property Name="AvaliableSunday" Type="bit" Nullable="false" />
+          <Property Name="MondayStart" Type="time" Precision="7" />
+          <Property Name="MondayEnd" Type="time" Precision="7" />
+          <Property Name="TuesdayStart" Type="time" Precision="7" />
+          <Property Name="TuesdayEnd" Type="time" Precision="7" />
+          <Property Name="WednesdayStart" Type="time" Precision="7" />
+          <Property Name="WednesdayEnd" Type="time" Precision="7" />
+          <Property Name="ThursdayStart" Type="time" Precision="7" />
+          <Property Name="ThursdayEnd" Type="time" Precision="7" />
+          <Property Name="FridayStart" Type="time" Precision="7" />
+          <Property Name="FridayEnd" Type="time" Precision="7" />
+          <Property Name="SaturdayStart" Type="time" Precision="7" />
+          <Property Name="SaturdayEnd" Type="time" Precision="7" />
+          <Property Name="SundayStart" Type="time" Precision="7" />
+          <Property Name="SundayEnd" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Exercises">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gym">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GymName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Zip" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MySwoleMate.dbo.GymTransfer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GymTransfer">
+          <Key>
+            <PropertyRef Name="GymID_FK" />
+            <PropertyRef Name="TrainerID_FK" />
+          </Key>
+          <Property Name="GymID_FK" Type="int" Nullable="false" />
+          <Property Name="TrainerID_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MealTime" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="MealName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MealPlan">
+          <Key>
+            <PropertyRef Name="Id_FK" />
+          </Key>
+          <Property Name="Id_FK" Type="int" Nullable="false" />
+          <Property Name="Week" Type="date" Nullable="false" />
+          <Property Name="MaxCal" Type="int" Nullable="false" />
+          <Property Name="MondayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="MondayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="MondaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="TuesdayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="TuesdayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="TuesdaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="WednesdayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="WednesdayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="WednesdaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="ThursdayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="ThursdayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="ThursdaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="FridayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="FridayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="FridaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="SaturdayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="SaturdayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="SaturdaySupper_FK" Type="int" Nullable="false" />
+          <Property Name="SundayBreakfast_FK" Type="int" Nullable="false" />
+          <Property Name="SundayLunch_FK" Type="int" Nullable="false" />
+          <Property Name="SundaySupper_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Trainer_FK" />
+            <PropertyRef Name="Trainee_FK" />
+          </Key>
+          <Property Name="Trainer_FK" Type="int" Nullable="false" />
+          <Property Name="Trainee_FK" Type="int" Nullable="false" />
+          <Property Name="From_FK" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayScale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pay" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MySwoleMate.dbo.Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="int" Nullable="false" />
+          <Property Name="About" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProfilePicture" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Trainee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Trainer_FK" Type="int" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Specialty" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GymID_FK" Type="int" Nullable="false" />
+          <Property Name="isAvaliable" Type="bit" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainerPay">
+          <Key>
+            <PropertyRef Name="Trainer_FK" />
+            <PropertyRef Name="Pay_FK" />
+          </Key>
+          <Property Name="Trainer_FK" Type="int" Nullable="false" />
+          <Property Name="Pay_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ex1" Type="int" Nullable="false" />
+          <Property Name="ex1Reps" Type="int" Nullable="false" />
+          <Property Name="ex2" Type="int" />
+          <Property Name="ex2Reps" Type="int" />
+          <Property Name="ex3" Type="int" />
+          <Property Name="ex3Reps" Type="int" />
+          <Property Name="ex4" Type="int" />
+          <Property Name="ex4Reps" Type="int" />
+          <Property Name="ex5" Type="int" />
+          <Property Name="ex5Reps" Type="int" />
+          <Property Name="ex6" Type="int" />
+          <Property Name="ex6Reps" Type="int" />
+          <Property Name="ex7" Type="int" />
+          <Property Name="ex7Reps" Type="int" />
+          <Property Name="ex8" Type="int" />
+          <Property Name="ex8Reps" Type="int" />
+          <Property Name="ex9" Type="int" />
+          <Property Name="ex9Reps" Type="int" />
+          <Property Name="ex10" Type="int" />
+          <Property Name="ex10Reps" Type="int" />
+        </EntityType>
+        <Association Name="FK_Avaliablity_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Avaliablity" Type="Self.Avaliablity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avaliablity">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymTransfer_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="GymTransfer" Type="Self.GymTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GymTransfer">
+              <PropertyRef Name="GymID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymTransfer_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="GymTransfer" Type="Self.GymTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GymTransfer">
+              <PropertyRef Name="TrainerID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal1">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal10">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal11">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal12">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal13">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal14">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal15">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal16">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal17">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal18">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal19">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal2">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal20">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal21">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal3">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal4">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal5">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal6">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal7">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal8">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal9">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="Id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Trainee_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainee1">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="From_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Trainer_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainer1">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="From_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainee_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainee">
+              <PropertyRef Name="Trainer_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainer_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="GymID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainerPay_PayScale">
+          <End Role="PayScale" Type="Self.PayScale" Multiplicity="1" />
+          <End Role="TrainerPay" Type="Self.TrainerPay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayScale">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrainerPay">
+              <PropertyRef Name="Pay_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainerPay_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="TrainerPay" Type="Self.TrainerPay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrainerPay">
+              <PropertyRef Name="Trainer_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises1">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises2">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises3">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises4">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises5">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises6">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises7">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises8">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises9">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex10" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MySwoleMateModelStoreContainer">
+          <EntitySet Name="Avaliablity" EntityType="Self.Avaliablity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercises" EntityType="Self.Exercises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gym" EntityType="Self.Gym" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meal" EntityType="Self.Meal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MealPlan" EntityType="Self.MealPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayScale" EntityType="Self.PayScale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainee" EntityType="Self.Trainee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainerPay" EntityType="Self.TrainerPay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymTransfer" EntityType="Self.GymTransfer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GymTransfer].[GymID_FK] AS [GymID_FK], 
+    [GymTransfer].[TrainerID_FK] AS [TrainerID_FK]
+    FROM [dbo].[GymTransfer] AS [GymTransfer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Profile" EntityType="Self.Profile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Profile].[ID_FK] AS [ID_FK], 
+    [Profile].[About] AS [About], 
+    [Profile].[ProfilePicture] AS [ProfilePicture]
+    FROM [dbo].[Profile] AS [Profile]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Avaliablity_Trainer" Association="Self.FK_Avaliablity_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Avaliablity" EntitySet="Avaliablity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymTransfer_Gym" Association="Self.FK_GymTransfer_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="GymTransfer" EntitySet="GymTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymTransfer_Trainer" Association="Self.FK_GymTransfer_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="GymTransfer" EntitySet="GymTransfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal" Association="Self.FK_MealPlan_Meal">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal1" Association="Self.FK_MealPlan_Meal1">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal10" Association="Self.FK_MealPlan_Meal10">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal11" Association="Self.FK_MealPlan_Meal11">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal12" Association="Self.FK_MealPlan_Meal12">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal13" Association="Self.FK_MealPlan_Meal13">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal14" Association="Self.FK_MealPlan_Meal14">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal15" Association="Self.FK_MealPlan_Meal15">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal16" Association="Self.FK_MealPlan_Meal16">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal17" Association="Self.FK_MealPlan_Meal17">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal18" Association="Self.FK_MealPlan_Meal18">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal19" Association="Self.FK_MealPlan_Meal19">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal2" Association="Self.FK_MealPlan_Meal2">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal20" Association="Self.FK_MealPlan_Meal20">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal21" Association="Self.FK_MealPlan_Meal21">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal3" Association="Self.FK_MealPlan_Meal3">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal4" Association="Self.FK_MealPlan_Meal4">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal5" Association="Self.FK_MealPlan_Meal5">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal6" Association="Self.FK_MealPlan_Meal6">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal7" Association="Self.FK_MealPlan_Meal7">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal8" Association="Self.FK_MealPlan_Meal8">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal9" Association="Self.FK_MealPlan_Meal9">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Trainee" Association="Self.FK_MealPlan_Trainee">
+            <End Role="Trainee" EntitySet="Trainee" />
+            <End Role="MealPlan" EntitySet="MealPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainee" Association="Self.FK_Message_Trainee">
+            <End Role="Trainee" EntitySet="Trainee" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainee1" Association="Self.FK_Message_Trainee1">
+            <End Role="Trainee" EntitySet="Trainee" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainer" Association="Self.FK_Message_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainer1" Association="Self.FK_Message_Trainer1">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Trainee" Association="Self.FK_Profile_Trainee">
+            <End Role="Trainee" EntitySet="Trainee" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Trainer" Association="Self.FK_Profile_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainee_Trainer" Association="Self.FK_Trainee_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Trainee" EntitySet="Trainee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainer_Gym" Association="Self.FK_Trainer_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="Trainer" EntitySet="Trainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainerPay_PayScale" Association="Self.FK_TrainerPay_PayScale">
+            <End Role="PayScale" EntitySet="PayScale" />
+            <End Role="TrainerPay" EntitySet="TrainerPay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainerPay_Trainer" Association="Self.FK_TrainerPay_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="TrainerPay" EntitySet="TrainerPay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises" Association="Self.FK_Workout_Exercises">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises1" Association="Self.FK_Workout_Exercises1">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises2" Association="Self.FK_Workout_Exercises2">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises3" Association="Self.FK_Workout_Exercises3">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises4" Association="Self.FK_Workout_Exercises4">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises5" Association="Self.FK_Workout_Exercises5">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises6" Association="Self.FK_Workout_Exercises6">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises7" Association="Self.FK_Workout_Exercises7">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises8" Association="Self.FK_Workout_Exercises8">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises9" Association="Self.FK_Workout_Exercises9">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Trainee" Association="Self.FK_Workout_Trainee">
+            <End Role="Trainee" EntitySet="Trainee" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MySwoleMateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Avaliablity">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="Int32" Nullable="false" />
+          <Property Name="AvaliableMonday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableTuesday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableWednesday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableThursday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableFriday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableSaturday" Type="Boolean" Nullable="false" />
+          <Property Name="AvaliableSunday" Type="Boolean" Nullable="false" />
+          <Property Name="MondayStart" Type="Time" Precision="7" />
+          <Property Name="MondayEnd" Type="Time" Precision="7" />
+          <Property Name="TuesdayStart" Type="Time" Precision="7" />
+          <Property Name="TuesdayEnd" Type="Time" Precision="7" />
+          <Property Name="WednesdayStart" Type="Time" Precision="7" />
+          <Property Name="WednesdayEnd" Type="Time" Precision="7" />
+          <Property Name="ThursdayStart" Type="Time" Precision="7" />
+          <Property Name="ThursdayEnd" Type="Time" Precision="7" />
+          <Property Name="FridayStart" Type="Time" Precision="7" />
+          <Property Name="FridayEnd" Type="Time" Precision="7" />
+          <Property Name="SaturdayStart" Type="Time" Precision="7" />
+          <Property Name="SaturdayEnd" Type="Time" Precision="7" />
+          <Property Name="SundayStart" Type="Time" Precision="7" />
+          <Property Name="SundayEnd" Type="Time" Precision="7" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_Avaliablity_Trainer" FromRole="Avaliablity" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Exercis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workouts" Relationship="Self.FK_Workout_Exercises" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts1" Relationship="Self.FK_Workout_Exercises1" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts2" Relationship="Self.FK_Workout_Exercises2" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts3" Relationship="Self.FK_Workout_Exercises3" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts4" Relationship="Self.FK_Workout_Exercises4" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts5" Relationship="Self.FK_Workout_Exercises5" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts6" Relationship="Self.FK_Workout_Exercises6" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts7" Relationship="Self.FK_Workout_Exercises7" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts8" Relationship="Self.FK_Workout_Exercises8" FromRole="Exercises" ToRole="Workout" />
+          <NavigationProperty Name="Workouts9" Relationship="Self.FK_Workout_Exercises9" FromRole="Exercises" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Gym">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GymName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Zip" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Trainers" Relationship="Self.FK_Trainer_Gym" FromRole="Gym" ToRole="Trainer" />
+          <NavigationProperty Name="Trainers1" Relationship="Self.GymTransfer" FromRole="Gym" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MealTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="MealName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MealPlans" Relationship="Self.FK_MealPlan_Meal" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans1" Relationship="Self.FK_MealPlan_Meal1" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans2" Relationship="Self.FK_MealPlan_Meal10" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans3" Relationship="Self.FK_MealPlan_Meal11" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans4" Relationship="Self.FK_MealPlan_Meal12" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans5" Relationship="Self.FK_MealPlan_Meal13" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans6" Relationship="Self.FK_MealPlan_Meal14" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans7" Relationship="Self.FK_MealPlan_Meal15" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans8" Relationship="Self.FK_MealPlan_Meal16" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans9" Relationship="Self.FK_MealPlan_Meal17" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans10" Relationship="Self.FK_MealPlan_Meal18" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans11" Relationship="Self.FK_MealPlan_Meal19" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans12" Relationship="Self.FK_MealPlan_Meal2" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans13" Relationship="Self.FK_MealPlan_Meal20" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans14" Relationship="Self.FK_MealPlan_Meal21" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans15" Relationship="Self.FK_MealPlan_Meal3" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans16" Relationship="Self.FK_MealPlan_Meal4" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans17" Relationship="Self.FK_MealPlan_Meal5" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans18" Relationship="Self.FK_MealPlan_Meal6" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans19" Relationship="Self.FK_MealPlan_Meal7" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans20" Relationship="Self.FK_MealPlan_Meal8" FromRole="Meal" ToRole="MealPlan" />
+          <NavigationProperty Name="MealPlans21" Relationship="Self.FK_MealPlan_Meal9" FromRole="Meal" ToRole="MealPlan" />
+        </EntityType>
+        <EntityType Name="MealPlan">
+          <Key>
+            <PropertyRef Name="Id_FK" />
+          </Key>
+          <Property Name="Id_FK" Type="Int32" Nullable="false" />
+          <Property Name="Week" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MaxCal" Type="Int32" Nullable="false" />
+          <Property Name="MondayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="MondayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="MondaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="TuesdayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="TuesdayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="TuesdaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="WednesdayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="WednesdayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="WednesdaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="ThursdayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="ThursdayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="ThursdaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="FridayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="FridayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="FridaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="SaturdayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="SaturdayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="SaturdaySupper_FK" Type="Int32" Nullable="false" />
+          <Property Name="SundayBreakfast_FK" Type="Int32" Nullable="false" />
+          <Property Name="SundayLunch_FK" Type="Int32" Nullable="false" />
+          <Property Name="SundaySupper_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK_MealPlan_Meal" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal1" Relationship="Self.FK_MealPlan_Meal1" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal2" Relationship="Self.FK_MealPlan_Meal10" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal3" Relationship="Self.FK_MealPlan_Meal11" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal4" Relationship="Self.FK_MealPlan_Meal12" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal5" Relationship="Self.FK_MealPlan_Meal13" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal6" Relationship="Self.FK_MealPlan_Meal14" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal7" Relationship="Self.FK_MealPlan_Meal15" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal8" Relationship="Self.FK_MealPlan_Meal16" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal9" Relationship="Self.FK_MealPlan_Meal17" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal10" Relationship="Self.FK_MealPlan_Meal18" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal11" Relationship="Self.FK_MealPlan_Meal19" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal12" Relationship="Self.FK_MealPlan_Meal2" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal13" Relationship="Self.FK_MealPlan_Meal20" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal14" Relationship="Self.FK_MealPlan_Meal21" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal15" Relationship="Self.FK_MealPlan_Meal3" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal16" Relationship="Self.FK_MealPlan_Meal4" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal17" Relationship="Self.FK_MealPlan_Meal5" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal18" Relationship="Self.FK_MealPlan_Meal6" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal19" Relationship="Self.FK_MealPlan_Meal7" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal20" Relationship="Self.FK_MealPlan_Meal8" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Meal21" Relationship="Self.FK_MealPlan_Meal9" FromRole="MealPlan" ToRole="Meal" />
+          <NavigationProperty Name="Trainee" Relationship="Self.FK_MealPlan_Trainee" FromRole="MealPlan" ToRole="Trainee" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Trainer_FK" />
+            <PropertyRef Name="Trainee_FK" />
+          </Key>
+          <Property Name="Trainer_FK" Type="Int32" Nullable="false" />
+          <Property Name="Trainee_FK" Type="Int32" Nullable="false" />
+          <Property Name="From_FK" Type="Int32" Nullable="false" />
+          <Property Name="Message1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Trainee" Relationship="Self.FK_Message_Trainee" FromRole="Message" ToRole="Trainee" />
+          <NavigationProperty Name="Trainee1" Relationship="Self.FK_Message_Trainee1" FromRole="Message" ToRole="Trainee" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_Message_Trainer" FromRole="Message" ToRole="Trainer" />
+          <NavigationProperty Name="Trainer1" Relationship="Self.FK_Message_Trainer1" FromRole="Message" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="PayScale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Trainers" Relationship="Self.TrainerPay" FromRole="PayScale" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Trainee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Trainer_FK" Type="Int32" />
+          <NavigationProperty Name="MealPlan" Relationship="Self.FK_MealPlan_Trainee" FromRole="Trainee" ToRole="MealPlan" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_Message_Trainee" FromRole="Trainee" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="Self.FK_Message_Trainee1" FromRole="Trainee" ToRole="Message" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Profile_Trainee" FromRole="Trainee" ToRole="Profile" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_Trainee_Trainer" FromRole="Trainee" ToRole="Trainer" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Workout_Trainee" FromRole="Trainee" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Specialty" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GymID_FK" Type="Int32" Nullable="false" />
+          <Property Name="isAvaliable" Type="Boolean" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Avaliablity" Relationship="Self.FK_Avaliablity_Trainer" FromRole="Trainer" ToRole="Avaliablity" />
+          <NavigationProperty Name="Gym" Relationship="Self.FK_Trainer_Gym" FromRole="Trainer" ToRole="Gym" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_Message_Trainer" FromRole="Trainer" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="Self.FK_Message_Trainer1" FromRole="Trainer" ToRole="Message" />
+          <NavigationProperty Name="Trainees" Relationship="Self.FK_Trainee_Trainer" FromRole="Trainer" ToRole="Trainee" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Profile_Trainer" FromRole="Trainer" ToRole="Profile" />
+          <NavigationProperty Name="PayScales" Relationship="Self.TrainerPay" FromRole="Trainer" ToRole="PayScale" />
+          <NavigationProperty Name="Gyms" Relationship="Self.GymTransfer" FromRole="Trainer" ToRole="Gym" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ex1" Type="Int32" Nullable="false" />
+          <Property Name="ex1Reps" Type="Int32" Nullable="false" />
+          <Property Name="ex2" Type="Int32" />
+          <Property Name="ex2Reps" Type="Int32" />
+          <Property Name="ex3" Type="Int32" />
+          <Property Name="ex3Reps" Type="Int32" />
+          <Property Name="ex4" Type="Int32" />
+          <Property Name="ex4Reps" Type="Int32" />
+          <Property Name="ex5" Type="Int32" />
+          <Property Name="ex5Reps" Type="Int32" />
+          <Property Name="ex6" Type="Int32" />
+          <Property Name="ex6Reps" Type="Int32" />
+          <Property Name="ex7" Type="Int32" />
+          <Property Name="ex7Reps" Type="Int32" />
+          <Property Name="ex8" Type="Int32" />
+          <Property Name="ex8Reps" Type="Int32" />
+          <Property Name="ex9" Type="Int32" />
+          <Property Name="ex9Reps" Type="Int32" />
+          <Property Name="ex10" Type="Int32" />
+          <Property Name="ex10Reps" Type="Int32" />
+          <NavigationProperty Name="Exercis" Relationship="Self.FK_Workout_Exercises" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis1" Relationship="Self.FK_Workout_Exercises1" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis2" Relationship="Self.FK_Workout_Exercises2" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis3" Relationship="Self.FK_Workout_Exercises3" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis4" Relationship="Self.FK_Workout_Exercises4" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis5" Relationship="Self.FK_Workout_Exercises5" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis6" Relationship="Self.FK_Workout_Exercises6" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis7" Relationship="Self.FK_Workout_Exercises7" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis8" Relationship="Self.FK_Workout_Exercises8" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Exercis9" Relationship="Self.FK_Workout_Exercises9" FromRole="Workout" ToRole="Exercises" />
+          <NavigationProperty Name="Trainee" Relationship="Self.FK_Workout_Trainee" FromRole="Workout" ToRole="Trainee" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ID_FK" />
+          </Key>
+          <Property Name="ID_FK" Type="Int32" Nullable="false" />
+          <Property Name="About" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trainee" Relationship="Self.FK_Profile_Trainee" FromRole="Profile" ToRole="Trainee" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_Profile_Trainer" FromRole="Profile" ToRole="Trainer" />
+        </EntityType>
+        <Association Name="FK_Avaliablity_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Avaliablity" Type="Self.Avaliablity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avaliablity">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises1">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises2">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises3">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises4">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises5">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises6">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises7">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises8">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Exercises9">
+          <End Role="Exercises" Type="Self.Exercis" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ex10" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainer_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="GymID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal1">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal10">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal11">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal12">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal13">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal14">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="ThursdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal15">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal16">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal17">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="TuesdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal18">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal19">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal2">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="FridaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal20">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal21">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="WednesdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal3">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal4">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal5">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="MondaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal6">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal7">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdayLunch_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal8">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SaturdaySupper_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Meal9">
+          <End Role="Meal" Type="Self.Meal" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="SundayBreakfast_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealPlan_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="MealPlan" Type="Self.MealPlan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MealPlan">
+              <PropertyRef Name="Id_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Trainee_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainee1">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="From_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="Trainer_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Trainer1">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="From_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trainee_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainee">
+              <PropertyRef Name="Trainer_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Trainee">
+          <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="ID_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TrainerPay">
+          <End Role="PayScale" Type="Self.PayScale" Multiplicity="*" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+        </Association>
+        <Association Name="GymTransfer">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="*" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MySwoleMateEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Avaliablities" EntityType="Self.Avaliablity" />
+          <EntitySet Name="Exercises" EntityType="Self.Exercis" />
+          <EntitySet Name="Gyms" EntityType="Self.Gym" />
+          <EntitySet Name="Meals" EntityType="Self.Meal" />
+          <EntitySet Name="MealPlans" EntityType="Self.MealPlan" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="PayScales" EntityType="Self.PayScale" />
+          <EntitySet Name="Trainees" EntityType="Self.Trainee" />
+          <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+          <EntitySet Name="Workouts" EntityType="Self.Workout" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <AssociationSet Name="FK_Avaliablity_Trainer" Association="Self.FK_Avaliablity_Trainer">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Avaliablity" EntitySet="Avaliablities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises" Association="Self.FK_Workout_Exercises">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises1" Association="Self.FK_Workout_Exercises1">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises2" Association="Self.FK_Workout_Exercises2">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises3" Association="Self.FK_Workout_Exercises3">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises4" Association="Self.FK_Workout_Exercises4">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises5" Association="Self.FK_Workout_Exercises5">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises6" Association="Self.FK_Workout_Exercises6">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises7" Association="Self.FK_Workout_Exercises7">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises8" Association="Self.FK_Workout_Exercises8">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Exercises9" Association="Self.FK_Workout_Exercises9">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainer_Gym" Association="Self.FK_Trainer_Gym">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="Trainer" EntitySet="Trainers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal" Association="Self.FK_MealPlan_Meal">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal1" Association="Self.FK_MealPlan_Meal1">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal10" Association="Self.FK_MealPlan_Meal10">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal11" Association="Self.FK_MealPlan_Meal11">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal12" Association="Self.FK_MealPlan_Meal12">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal13" Association="Self.FK_MealPlan_Meal13">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal14" Association="Self.FK_MealPlan_Meal14">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal15" Association="Self.FK_MealPlan_Meal15">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal16" Association="Self.FK_MealPlan_Meal16">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal17" Association="Self.FK_MealPlan_Meal17">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal18" Association="Self.FK_MealPlan_Meal18">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal19" Association="Self.FK_MealPlan_Meal19">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal2" Association="Self.FK_MealPlan_Meal2">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal20" Association="Self.FK_MealPlan_Meal20">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal21" Association="Self.FK_MealPlan_Meal21">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal3" Association="Self.FK_MealPlan_Meal3">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal4" Association="Self.FK_MealPlan_Meal4">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal5" Association="Self.FK_MealPlan_Meal5">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal6" Association="Self.FK_MealPlan_Meal6">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal7" Association="Self.FK_MealPlan_Meal7">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal8" Association="Self.FK_MealPlan_Meal8">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Meal9" Association="Self.FK_MealPlan_Meal9">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealPlan_Trainee" Association="Self.FK_MealPlan_Trainee">
+            <End Role="Trainee" EntitySet="Trainees" />
+            <End Role="MealPlan" EntitySet="MealPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainee" Association="Self.FK_Message_Trainee">
+            <End Role="Trainee" EntitySet="Trainees" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainee1" Association="Self.FK_Message_Trainee1">
+            <End Role="Trainee" EntitySet="Trainees" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainer" Association="Self.FK_Message_Trainer">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Trainer1" Association="Self.FK_Message_Trainer1">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Trainee" Association="Self.FK_Profile_Trainee">
+            <End Role="Trainee" EntitySet="Trainees" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trainee_Trainer" Association="Self.FK_Trainee_Trainer">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Trainee" EntitySet="Trainees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Trainee" Association="Self.FK_Workout_Trainee">
+            <End Role="Trainee" EntitySet="Trainees" />
+            <End Role="Workout" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_Trainer" Association="Self.FK_Profile_Trainer">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="TrainerPay" Association="Self.TrainerPay">
+            <End Role="PayScale" EntitySet="PayScales" />
+            <End Role="Trainer" EntitySet="Trainers" />
+          </AssociationSet>
+          <AssociationSet Name="GymTransfer" Association="Self.GymTransfer">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="Trainer" EntitySet="Trainers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MySwoleMateModelStoreContainer" CdmEntityContainer="MySwoleMateEntities">
+          <EntitySetMapping Name="Avaliablities">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Avaliablity">
+              <MappingFragment StoreEntitySet="Avaliablity">
+                <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+                <ScalarProperty Name="AvaliableMonday" ColumnName="AvaliableMonday" />
+                <ScalarProperty Name="AvaliableTuesday" ColumnName="AvaliableTuesday" />
+                <ScalarProperty Name="AvaliableWednesday" ColumnName="AvaliableWednesday" />
+                <ScalarProperty Name="AvaliableThursday" ColumnName="AvaliableThursday" />
+                <ScalarProperty Name="AvaliableFriday" ColumnName="AvaliableFriday" />
+                <ScalarProperty Name="AvaliableSaturday" ColumnName="AvaliableSaturday" />
+                <ScalarProperty Name="AvaliableSunday" ColumnName="AvaliableSunday" />
+                <ScalarProperty Name="MondayStart" ColumnName="MondayStart" />
+                <ScalarProperty Name="MondayEnd" ColumnName="MondayEnd" />
+                <ScalarProperty Name="TuesdayStart" ColumnName="TuesdayStart" />
+                <ScalarProperty Name="TuesdayEnd" ColumnName="TuesdayEnd" />
+                <ScalarProperty Name="WednesdayStart" ColumnName="WednesdayStart" />
+                <ScalarProperty Name="WednesdayEnd" ColumnName="WednesdayEnd" />
+                <ScalarProperty Name="ThursdayStart" ColumnName="ThursdayStart" />
+                <ScalarProperty Name="ThursdayEnd" ColumnName="ThursdayEnd" />
+                <ScalarProperty Name="FridayStart" ColumnName="FridayStart" />
+                <ScalarProperty Name="FridayEnd" ColumnName="FridayEnd" />
+                <ScalarProperty Name="SaturdayStart" ColumnName="SaturdayStart" />
+                <ScalarProperty Name="SaturdayEnd" ColumnName="SaturdayEnd" />
+                <ScalarProperty Name="SundayStart" ColumnName="SundayStart" />
+                <ScalarProperty Name="SundayEnd" ColumnName="SundayEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercises">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Exercis">
+              <MappingFragment StoreEntitySet="Exercises">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gyms">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Gym">
+              <MappingFragment StoreEntitySet="Gym">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GymName" ColumnName="GymName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meals">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MealTime" ColumnName="MealTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="MealName" ColumnName="MealName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MealPlans">
+            <EntityTypeMapping TypeName="MySwoleMateModel.MealPlan">
+              <MappingFragment StoreEntitySet="MealPlan">
+                <ScalarProperty Name="Id_FK" ColumnName="Id_FK" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="MaxCal" ColumnName="MaxCal" />
+                <ScalarProperty Name="MondayBreakfast_FK" ColumnName="MondayBreakfast_FK" />
+                <ScalarProperty Name="MondayLunch_FK" ColumnName="MondayLunch_FK" />
+                <ScalarProperty Name="MondaySupper_FK" ColumnName="MondaySupper_FK" />
+                <ScalarProperty Name="TuesdayBreakfast_FK" ColumnName="TuesdayBreakfast_FK" />
+                <ScalarProperty Name="TuesdayLunch_FK" ColumnName="TuesdayLunch_FK" />
+                <ScalarProperty Name="TuesdaySupper_FK" ColumnName="TuesdaySupper_FK" />
+                <ScalarProperty Name="WednesdayBreakfast_FK" ColumnName="WednesdayBreakfast_FK" />
+                <ScalarProperty Name="WednesdayLunch_FK" ColumnName="WednesdayLunch_FK" />
+                <ScalarProperty Name="WednesdaySupper_FK" ColumnName="WednesdaySupper_FK" />
+                <ScalarProperty Name="ThursdayBreakfast_FK" ColumnName="ThursdayBreakfast_FK" />
+                <ScalarProperty Name="ThursdayLunch_FK" ColumnName="ThursdayLunch_FK" />
+                <ScalarProperty Name="ThursdaySupper_FK" ColumnName="ThursdaySupper_FK" />
+                <ScalarProperty Name="FridayBreakfast_FK" ColumnName="FridayBreakfast_FK" />
+                <ScalarProperty Name="FridayLunch_FK" ColumnName="FridayLunch_FK" />
+                <ScalarProperty Name="FridaySupper_FK" ColumnName="FridaySupper_FK" />
+                <ScalarProperty Name="SaturdayBreakfast_FK" ColumnName="SaturdayBreakfast_FK" />
+                <ScalarProperty Name="SaturdayLunch_FK" ColumnName="SaturdayLunch_FK" />
+                <ScalarProperty Name="SaturdaySupper_FK" ColumnName="SaturdaySupper_FK" />
+                <ScalarProperty Name="SundayBreakfast_FK" ColumnName="SundayBreakfast_FK" />
+                <ScalarProperty Name="SundayLunch_FK" ColumnName="SundayLunch_FK" />
+                <ScalarProperty Name="SundaySupper_FK" ColumnName="SundaySupper_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Trainer_FK" ColumnName="Trainer_FK" />
+                <ScalarProperty Name="Trainee_FK" ColumnName="Trainee_FK" />
+                <ScalarProperty Name="From_FK" ColumnName="From_FK" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayScales">
+            <EntityTypeMapping TypeName="MySwoleMateModel.PayScale">
+              <MappingFragment StoreEntitySet="PayScale">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainees">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Trainee">
+              <MappingFragment StoreEntitySet="Trainee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Trainer_FK" ColumnName="Trainer_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainers">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+                <ScalarProperty Name="GymID_FK" ColumnName="GymID_FK" />
+                <ScalarProperty Name="isAvaliable" ColumnName="isAvaliable" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workouts">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Workout">
+              <MappingFragment StoreEntitySet="Workout">
+                <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ex1" ColumnName="ex1" />
+                <ScalarProperty Name="ex1Reps" ColumnName="ex1Reps" />
+                <ScalarProperty Name="ex2" ColumnName="ex2" />
+                <ScalarProperty Name="ex2Reps" ColumnName="ex2Reps" />
+                <ScalarProperty Name="ex3" ColumnName="ex3" />
+                <ScalarProperty Name="ex3Reps" ColumnName="ex3Reps" />
+                <ScalarProperty Name="ex4" ColumnName="ex4" />
+                <ScalarProperty Name="ex4Reps" ColumnName="ex4Reps" />
+                <ScalarProperty Name="ex5" ColumnName="ex5" />
+                <ScalarProperty Name="ex5Reps" ColumnName="ex5Reps" />
+                <ScalarProperty Name="ex6" ColumnName="ex6" />
+                <ScalarProperty Name="ex6Reps" ColumnName="ex6Reps" />
+                <ScalarProperty Name="ex7" ColumnName="ex7" />
+                <ScalarProperty Name="ex7Reps" ColumnName="ex7Reps" />
+                <ScalarProperty Name="ex8" ColumnName="ex8" />
+                <ScalarProperty Name="ex8Reps" ColumnName="ex8Reps" />
+                <ScalarProperty Name="ex9" ColumnName="ex9" />
+                <ScalarProperty Name="ex9Reps" ColumnName="ex9Reps" />
+                <ScalarProperty Name="ex10" ColumnName="ex10" />
+                <ScalarProperty Name="ex10Reps" ColumnName="ex10Reps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="MySwoleMateModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="ID_FK" ColumnName="ID_FK" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TrainerPay" TypeName="MySwoleMateModel.TrainerPay" StoreEntitySet="TrainerPay">
+            <EndProperty Name="PayScale">
+              <ScalarProperty Name="ID" ColumnName="Pay_FK" />
+            </EndProperty>
+            <EndProperty Name="Trainer">
+              <ScalarProperty Name="ID" ColumnName="Trainer_FK" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="GymTransfer" TypeName="MySwoleMateModel.GymTransfer" StoreEntitySet="GymTransfer">
+            <EndProperty Name="Gym">
+              <ScalarProperty Name="ID" ColumnName="GymID_FK" />
+            </EndProperty>
+            <EndProperty Name="Trainer">
+              <ScalarProperty Name="ID" ColumnName="TrainerID_FK" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
