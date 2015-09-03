@@ -15,7 +15,7 @@ angular.module("sportsStore", ["customFilters", "cart" ,"ngRoute"])
         templateUrl: "/views/placeOrder.html"
     });
     $routeProvider.when("/checkout", {
-       templateUrl: "/views/checkoutSummary.html" 
+       templateUrl: "/views/checkoutSummary.html"
     });
     $routeProvider.when("products", {
        templateUrl: "/views/productList.html"
